@@ -1,52 +1,109 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class ThirdPersonController : MonoBehaviour
 {
-    [Header("Movement settings")]
-    public float moveSpeed = 5f;         
-    public float rotationSpeed = 720f;  
+    [SerializeField] private Animator animator;
+    [SerializeField] private Transform cameraHolder;
 
-    [Header("Camera controls")]
-    public float cameraSensitivity = 2f;
-    public Transform cameraTransform; 
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 150f;
+    [SerializeField] private float animationSmoothness = 10f;
 
-    private CharacterController _characterController;
+    [SerializeField] private float mouseSensitivity = 2f;
+    [SerializeField] private float minPitch = -30f;
+    [SerializeField] private float maxPitch = 60f;
+    [SerializeField] private float cameraDistance = 3f;
+    [SerializeField] private float cameraHeightOffset = 1.5f;
+    [SerializeField] private float minCameraHeight = 0.3f;
 
-    void Start()
+    [SerializeField] private float strafeSpeedMultiplier = 0.8f;
+    [SerializeField] private float backwardSpeedMultiplier = 0.6f;
+
+    private Rigidbody _rigidbody;
+
+    private float _horizontalInput;
+    private float _verticalInput;
+
+    private float _currentHorizontal;
+    private float _currentVertical;
+
+    private float _yaw;
+    private float _pitch;
+
+    private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+    private static readonly int Vertical = Animator.StringToHash("Vertical");
+
+    private void Start()
     {
-        _characterController = GetComponent<CharacterController>();
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
-        if (cameraTransform == null)
-        {
-            cameraTransform = Camera.main.transform;
-        }
+        _yaw = transform.eulerAngles.y;
+        _pitch = cameraHolder.localEulerAngles.x;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    private void Update()
     {
-        var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _verticalInput = Input.GetAxisRaw("Vertical");
 
-        var inputDirection = new Vector3(horizontal, 0f, vertical);
-        
-        var moveDirection = cameraTransform.TransformDirection(inputDirection);
-        moveDirection.y = 0f;
+        _currentHorizontal = Mathf.Lerp(_currentHorizontal, _horizontalInput, Time.deltaTime * animationSmoothness);
+        _currentVertical = Mathf.Lerp(_currentVertical, _verticalInput, Time.deltaTime * animationSmoothness);
 
-        if (moveDirection.magnitude > 1f)
-            moveDirection.Normalize();
+        animator.SetFloat(Horizontal, _currentHorizontal);
+        animator.SetFloat(Vertical, _currentVertical);
 
-        _characterController.SimpleMove(moveDirection * moveSpeed);
+        HandleMouseRotation();
+    }
 
-        if (moveDirection.sqrMagnitude > 0.1f)
+    private void FixedUpdate()
+    {
+        MoveCharacter();
+    }
+
+    private void MoveCharacter()
+    {
+        var direction = transform.forward * _verticalInput + transform.right * _horizontalInput;
+        direction.y = 0;
+
+        var adjustedSpeed = moveSpeed;
+        if (_verticalInput < 0)
+            adjustedSpeed *= backwardSpeedMultiplier;
+        else if (_horizontalInput != 0 && _verticalInput == 0)
+            adjustedSpeed *= strafeSpeedMultiplier;
+
+        var velocity = direction.normalized * adjustedSpeed;
+        velocity.y = _rigidbody.velocity.y;
+
+        if (direction.magnitude == 0)
         {
-            var targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            velocity.x = 0;
+            velocity.z = 0;
         }
 
-        var mouseX = Input.GetAxis("Mouse X") * cameraSensitivity;
-        var mouseY = Input.GetAxis("Mouse Y") * cameraSensitivity;
+        _rigidbody.velocity = velocity;
+    }
 
-        cameraTransform.RotateAround(transform.position, Vector3.up, mouseX);
+    private void HandleMouseRotation()
+    {
+        _yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+        _pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
+
+        transform.rotation = Quaternion.Euler(0f, _yaw, 0f);
+
+        var cameraPosition = Quaternion.Euler(_pitch, _yaw, 0) * new Vector3(0, 0, -cameraDistance);
+        cameraPosition += transform.position + Vector3.up * cameraHeightOffset;
+
+        if (cameraPosition.y < transform.position.y + minCameraHeight)
+        {
+            cameraPosition.y = transform.position.y + minCameraHeight;
+        }
+
+        cameraHolder.position = cameraPosition;
+        cameraHolder.LookAt(transform.position + Vector3.up * cameraHeightOffset);
     }
 }
