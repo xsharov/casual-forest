@@ -12409,11 +12409,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 54011799331987210, guid: 3e394b69a3035f8488c8599f1d5a1bec,
+        type: 3}
+      propertyPath: gustDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 54011799331987210, guid: 3e394b69a3035f8488c8599f1d5a1bec,
+        type: 3}
+      propertyPath: gustInterval
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 54011799331987211, guid: 3e394b69a3035f8488c8599f1d5a1bec,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 258531015}
+    - target: {fileID: 54011799331987211, guid: 3e394b69a3035f8488c8599f1d5a1bec,
+        type: 3}
+      propertyPath: lerpSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54011799331987211, guid: 3e394b69a3035f8488c8599f1d5a1bec,
+        type: 3}
+      propertyPath: idleFactorMaterial
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54011799331987211, guid: 3e394b69a3035f8488c8599f1d5a1bec,
+        type: 3}
+      propertyPath: materialValueMultiplayer
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 54011799331987212, guid: 3e394b69a3035f8488c8599f1d5a1bec,
         type: 3}
       propertyPath: m_RootOrder
