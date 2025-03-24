@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 65587415726723953}
   - component: {fileID: 2427949858448134309}
   - component: {fileID: 394179482933516515}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4134265526977029055}
   - component: {fileID: 4216402257761022074}
-  m_Layer: 0
+  - component: {fileID: 6689501366758786394}
+  m_Layer: 3
   m_Name: Stump3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,3 +136,17 @@ LODGroup:
     renderers:
     - renderer: {fileID: 394179482933516515}
   m_Enabled: 1
+--- !u!136 &6689501366758786394
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608522649848494341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.24715514
+  m_Height: 1.4439623
+  m_Direction: 1
+  m_Center: {x: 0.022554234, y: 0.22198117, z: 0}

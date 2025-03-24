@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 924009605222057522}
   - component: {fileID: 2376753679342403028}
-  m_Layer: 0
+  - component: {fileID: 6784395071440800898}
+  m_Layer: 3
   m_Name: Bush1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,16 +49,28 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.15
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 0}
     - renderer: {fileID: 517520151776030251}
   - screenRelativeHeight: 0.01
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3911668607675009532}
   m_Enabled: 1
+--- !u!135 &6784395071440800898
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547589207887912072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 1.49, z: 0}
 --- !u!1 &1962130075339092663
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,8 +82,7 @@ GameObject:
   - component: {fileID: 7574283910977520168}
   - component: {fileID: 8765143808742517139}
   - component: {fileID: 3911668607675009532}
-  - component: {fileID: 8513840747633332523}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Billboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,20 +154,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8513840747633332523
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962130075339092663}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7154366728956263291
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +165,7 @@ GameObject:
   - component: {fileID: 4768983563592461053}
   - component: {fileID: 517520151776030251}
   - component: {fileID: 4505709181192545935}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

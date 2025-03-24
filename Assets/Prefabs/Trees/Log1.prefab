@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3614307220637733486}
   - component: {fileID: 4238273857091202630}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Log1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 8468097146728831960}
   - component: {fileID: 147876984234172315}
   - component: {fileID: 4297785070013893623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

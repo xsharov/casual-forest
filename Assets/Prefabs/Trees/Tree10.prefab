@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 833412124515099774}
   - component: {fileID: 7095889096217064163}
   - component: {fileID: 2087164093051110747}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,8 +94,7 @@ GameObject:
   - component: {fileID: 3080321526853576208}
   - component: {fileID: 6980422251479409021}
   - component: {fileID: 2287933111971828421}
-  - component: {fileID: 226059367450272924}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Billboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,20 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &226059367450272924
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3616965496165122920}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7748877245669827721
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +177,7 @@ GameObject:
   - component: {fileID: 5260663931326235876}
   - component: {fileID: 3834101301544264346}
   - component: {fileID: 7823870903269491277}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tree10.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +259,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6956380588181867386}
   - component: {fileID: 3335177126683564298}
-  m_Layer: 0
+  - component: {fileID: 8953327277885664146}
+  m_Layer: 3
   m_Name: Tree10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +299,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.15
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7823870903269491277}
@@ -323,3 +309,17 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2287933111971828421}
   m_Enabled: 1
+--- !u!136 &8953327277885664146
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764724612246573504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3038062
+  m_Height: 8.235287
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.6176434, z: 0}

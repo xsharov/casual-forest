@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4545471803477917824}
   - component: {fileID: 7036644308642198826}
   - component: {fileID: 1332377375757583334}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,8 +94,7 @@ GameObject:
   - component: {fileID: 8603281835215125974}
   - component: {fileID: 349486197102814806}
   - component: {fileID: 7564564583117227116}
-  - component: {fileID: 1250707451974510118}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Billboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,20 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1250707451974510118
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6749887932058668014}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7043994793081336215
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +176,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7677119338739936045}
   - component: {fileID: 1593838525124964376}
-  m_Layer: 0
+  - component: {fileID: 8323005752962639430}
+  m_Layer: 3
   m_Name: Tree3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +216,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.15
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2764073597039325900}
@@ -240,6 +226,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7564564583117227116}
   m_Enabled: 1
+--- !u!136 &8323005752962639430
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7043994793081336215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.27298397
+  m_Height: 4.954474
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.977237, z: 0}
 --- !u!1 &7428947113351019031
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 6003430939153093316}
   - component: {fileID: 5807751231438280075}
   - component: {fileID: 2764073597039325900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tree3.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

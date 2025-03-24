@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6826285630492162696}
   - component: {fileID: 8560632897144068743}
   - component: {fileID: 5390034885390079091}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tree5.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4117929929895259210}
   - component: {fileID: 1405962830582782275}
-  m_Layer: 0
+  - component: {fileID: 4712594818493152357}
+  m_Layer: 3
   m_Name: Tree5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +133,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.15
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5390034885390079091}
@@ -142,6 +143,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 676688780153521766}
   m_Enabled: 1
+--- !u!136 &4712594818493152357
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633846177795634928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35394365
+  m_Height: 7.848918
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.424459, z: 0}
 --- !u!1 &6424837604806288474
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,8 +168,7 @@ GameObject:
   - component: {fileID: 7671993079054741855}
   - component: {fileID: 2392075080354842068}
   - component: {fileID: 676688780153521766}
-  - component: {fileID: 1141192811223126811}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Billboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,20 +240,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1141192811223126811
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6424837604806288474}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8974131745978301223
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 7028538251488249876}
   - component: {fileID: 2466807808074319170}
   - component: {fileID: 811914744798878268}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

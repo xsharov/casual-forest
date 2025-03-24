@@ -7,7 +7,6 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private Transform cameraHolder;
 
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 150f;
     [SerializeField] private float animationSmoothness = 10f;
 
     [SerializeField] private float mouseSensitivity = 2f;

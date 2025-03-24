@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 7442683310976502262}
   - component: {fileID: 7812054218360780152}
   - component: {fileID: 4744288150790147354}
-  - component: {fileID: 8130180584317868285}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Billboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8130180584317868285
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4835781397969784729}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &6019447180700592712
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6395832738134552818}
   - component: {fileID: 2462512774447125367}
-  m_Layer: 0
+  - component: {fileID: 8425347362170200037}
+  m_Layer: 3
   m_Name: Bush2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +133,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.15
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2060551958217563486}
@@ -157,6 +143,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4744288150790147354}
   m_Enabled: 1
+--- !u!135 &8425347362170200037
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019447180700592712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &7397031361228622389
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +167,7 @@ GameObject:
   - component: {fileID: 6864765703404946179}
   - component: {fileID: 6426438527788641819}
   - component: {fileID: 2060551958217563486}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bush2.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +250,7 @@ GameObject:
   - component: {fileID: 7240635030551467262}
   - component: {fileID: 7813150187541907729}
   - component: {fileID: 1931895196499668273}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

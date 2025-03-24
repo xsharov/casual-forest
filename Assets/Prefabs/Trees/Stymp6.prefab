@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3568366927521012140}
   - component: {fileID: 6768658765175710389}
-  m_Layer: 0
+  - component: {fileID: 5198227017874066361}
+  m_Layer: 3
   m_Name: Stymp6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,6 +53,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7564255416905623071}
   m_Enabled: 1
+--- !u!136 &5198227017874066361
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237520545544143638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.16854897
+  m_Height: 1.0343976
+  m_Direction: 1
+  m_Center: {x: -0.012612402, y: 0.017198801, z: 0}
 --- !u!1 &4501087821107648386
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +78,7 @@ GameObject:
   - component: {fileID: 7560551532905322848}
   - component: {fileID: 5671871269458579405}
   - component: {fileID: 7564255416905623071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
