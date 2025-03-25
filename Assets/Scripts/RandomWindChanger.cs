@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// [ExecuteAlways]
+[ExecuteAlways]
 public class RandomWindChanger : MonoBehaviour
 {
     public delegate void WindChangedHandler(float windSpeed, float windPower, Vector3 windDirection, bool isGust);

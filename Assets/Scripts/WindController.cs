@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.VFX;
 
-// [ExecuteAlways]
+[ExecuteAlways]
 public class WindController : MonoBehaviour
 {
-    [SerializeField] private Material targetMaterial;
+    [SerializeField] private Material vegetationMaterial;
+    [SerializeField] private Material waterMaterial;
+    
     [SerializeField] private VisualEffect fvxGraph;
     [SerializeField] private Transform player;
 
@@ -21,6 +24,11 @@ public class WindController : MonoBehaviour
     [SerializeField] private float idleFactorMaterial = 0.001f;
     [SerializeField] private float idleFactorVfx = 0.001f;
     [SerializeField] private float multiplierLerpSpeed = 1f;
+    
+    [Header("Idle Factors")]
+    [SerializeField] private float waterTimeModifier = 1f; 
+    [SerializeField] private  float waterTransitionDuration = 1f;
+    [SerializeField] private float windMaterialTransitionDuration = 1f;
 
     private float _materialMultiplier = 1f;
     
@@ -34,6 +42,19 @@ public class WindController : MonoBehaviour
 
     private bool _currentGustState = false;
 
+    private Vector3 _waterCurrentVelocity; 
+    private Vector2 _waterOffset;   
+    private float _waterTransitionTimer = 0f;
+    private Vector3 _waterPreviousVelocity;
+    
+    private float _windPowerTransitionTimer = 0f;
+    private float _previousWindPower = 0f;
+    private float _windDirectionTransitionTimer = 0f;
+    private Vector3 _previousWindDirection = Vector3.zero;
+    
+    private static readonly int WindSpeed = Shader.PropertyToID("_WindSpeed");
+    private static readonly int WindDirection = Shader.PropertyToID("_WindDirection");
+    private static readonly int WaveOffset = Shader.PropertyToID("_WaveOffset");
     private void OnEnable()
     {
         RandomWindChanger.OnWindChanged += ChangeWind;
@@ -53,6 +74,9 @@ public class WindController : MonoBehaviour
         _targetWindSpeed = defaultWindSpeed;
         _targetWindPower = defaultWindPower;
         _targetWindDirection = defaultWindDirection;
+
+        _waterCurrentVelocity = _targetWindDirection.normalized * waterTimeModifier;
+        _waterPreviousVelocity = _waterCurrentVelocity;
 
         _materialMultiplier = _currentGustState ? 1f : idleFactorMaterial;
         
@@ -75,6 +99,7 @@ public class WindController : MonoBehaviour
 
 
         UpdateMaterialProperties();
+        UpdateWaterProperties();
 
         if (fvxGraph == null) return;
         
@@ -83,24 +108,70 @@ public class WindController : MonoBehaviour
         fvxGraph.SetVector3("windDirection", _currentWindDirection);
         
         // if (player == null) return;
-        
         // fvxGraph.SetVector3("playerPosition", player.position);
     }
 
     private void UpdateMaterialProperties()
     {
-        if (targetMaterial == null) return;
+        if (vegetationMaterial == null) return;
         
-        if (_currentGustState == false) return;
+        var targetWindPower = _currentWindPower * _materialMultiplier * materialValueMultiplayer;
         
-        var materialWindPower = _currentWindPower * _materialMultiplier;
-        targetMaterial.SetFloat("_WindPower", materialWindPower * materialValueMultiplayer);
-        targetMaterial.SetVector("_WindDirection", _currentWindDirection * materialValueMultiplayer);
+        if (_previousWindPower != targetWindPower)
+        {
+            _previousWindPower = _currentWindPower * _materialMultiplier * materialValueMultiplayer;
+            _windPowerTransitionTimer = 0f;
+        }
+
+        if (_windPowerTransitionTimer < windMaterialTransitionDuration)
+        {
+            _windPowerTransitionTimer += Time.deltaTime;
+            var t = Mathf.Clamp01(_windPowerTransitionTimer / windMaterialTransitionDuration);
+            targetWindPower = Mathf.Lerp(_previousWindPower, _currentWindPower * _materialMultiplier * materialValueMultiplayer, t);
+        }
+
+        vegetationMaterial.SetFloat(WindSpeed, targetWindPower);
+
+        var targetWindDirection = _currentWindDirection * materialValueMultiplayer;
+        
+        if (_previousWindDirection != targetWindDirection)
+        {
+            _previousWindDirection = _currentWindDirection * materialValueMultiplayer;
+            _windDirectionTransitionTimer = 0f;
+        }
+
+        if (_windDirectionTransitionTimer < windMaterialTransitionDuration)
+        {
+            _windDirectionTransitionTimer += Time.deltaTime;
+            var t = Mathf.Clamp01(_windDirectionTransitionTimer / windMaterialTransitionDuration);
+            targetWindDirection = Vector3.Lerp(_previousWindDirection, _currentWindDirection * materialValueMultiplayer, t);
+        }
+        
+        vegetationMaterial.SetVector(WindDirection, targetWindDirection);
+    }
+
+    private void UpdateWaterProperties()
+    {
+        if (_waterCurrentVelocity != _targetWindDirection.normalized * waterTimeModifier)
+        {
+            _waterPreviousVelocity = _waterCurrentVelocity;
+            _waterCurrentVelocity = _targetWindDirection.normalized * waterTimeModifier;
+            _waterTransitionTimer = 0f;
+        }
+
+        if (_waterTransitionTimer < waterTransitionDuration)
+        {
+            _waterTransitionTimer += Time.deltaTime;
+            var t = Mathf.Clamp01(_waterTransitionTimer / waterTransitionDuration);
+            _waterCurrentVelocity = Vector3.Lerp(_waterPreviousVelocity, _targetWindDirection.normalized * waterTimeModifier, t);
+        }
+        
+        _waterOffset += new Vector2(_waterCurrentVelocity.x,_waterCurrentVelocity.z) * Time.deltaTime;
+        waterMaterial.SetVector(WaveOffset, _waterOffset);
     }
 
     private void ChangeWind(float newWindSpeed, float newWindPower, Vector3 newWindDirection, bool isGust)
     {
-        // Debug.Log($"Wind change event received: Speed={newWindSpeed:F2}, Power={newWindPower:F2}, Direction={newWindDirection}, isGust={isGust}");
         _targetWindSpeed = newWindSpeed;
         _targetWindPower = newWindPower;
         _targetWindDirection = newWindDirection;
