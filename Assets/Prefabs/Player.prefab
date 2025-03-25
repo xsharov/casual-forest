@@ -109,8 +109,8 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
+  m_Antialiasing: 2
+  m_AntialiasingQuality: 1
   m_StopNaN: 0
   m_Dithering: 0
   m_ClearDepth: 1
@@ -146,8 +146,8 @@ Transform:
   m_GameObject: {fileID: 3079890216349688619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 163.665, y: 24.991962, z: 155.223}
-  m_LocalScale: {x: 0.8, y: 1.8, z: 0.8}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9, y: 2.0249999, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6919148601164926359}
   - {fileID: 8843859481257336531}
@@ -169,12 +169,11 @@ MonoBehaviour:
   animator: {fileID: 3196323749342053545}
   cameraHolder: {fileID: 6919148601164926359}
   moveSpeed: 5
-  rotationSpeed: 120
   animationSmoothness: 10
   mouseSensitivity: 2
   minPitch: -30
   maxPitch: 60
-  cameraDistance: 3
+  cameraDistance: 2
   cameraHeightOffset: 1.5
   minCameraHeight: 0.3
   strafeSpeedMultiplier: 0.8

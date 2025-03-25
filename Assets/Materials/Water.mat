@@ -123,7 +123,7 @@ Material:
     - _SrcBlend: 5
     - _Surface: 1
     - _WaveAmount: 15
-    - _WaveScale: 250
+    - _WaveScale: 500
     - _WaveSpeed: 1
     - _WaveStrength: 1
     - _WaveVertDistortionScale: 100
@@ -142,7 +142,7 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WaterColor: {r: 0, g: 0.3632072, b: 0.990566, a: 0}
     - _WaveDir: {r: 0, g: 0, b: 0, a: 0}
-    - _WaveOffset: {r: -28.78152, g: -26.675922, b: 0, a: 0}
+    - _WaveOffset: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8050393906828749886
 MonoBehaviour:
