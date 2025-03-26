@@ -9447,7 +9447,7 @@ MonoBehaviour:
   m_OutputSlots:
   - {fileID: 8926484042661615190}
   m_Disabled: 0
-  mode: 1
+  mode: 0
   clampToOne: 1
 --- !u!114 &8926484042661615189
 MonoBehaviour:
@@ -9474,7 +9474,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 10
+      m_SerializableObject: 30
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -17900,7 +17900,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":0.9382352828979492,"g":0.9382352828979492,"b":0.9382352828979492,"a":1.0},"time":0.0470588244497776},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.0,"time":0.01765468902885914},{"alpha":1.0,"time":0.07058823853731156},{"alpha":1.0,"time":0.5529412031173706},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":0.9382352828979492,"g":0.9382352828979492,"b":0.9382352828979492,"a":1.0},"time":0.14706645905971528},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.0,"time":0.09117265790700913},{"alpha":1.0,"time":0.12059205025434494},{"alpha":1.0,"time":0.5529412031173706},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: 
