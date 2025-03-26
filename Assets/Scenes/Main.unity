@@ -138,6 +138,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5648592107598907797}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1717763229 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3079890215199875280, guid: 2cd0609347e641a4b8a51828b0d47f4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3079890215442977793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!108 &2016680212 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 5648592107955607915, guid: 88b5bbdaf71b0b94e8411551f102f7f1,
@@ -151,16 +157,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1261204221, guid: 3e394b69a3035f8488c8599f1d5a1bec, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1717763229}
     - target: {fileID: 54011799331987211, guid: 3e394b69a3035f8488c8599f1d5a1bec,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 258531015}
-    - target: {fileID: 54011799331987211, guid: 3e394b69a3035f8488c8599f1d5a1bec,
-        type: 3}
-      propertyPath: materialValueMultiplayer
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 54011799331987212, guid: 3e394b69a3035f8488c8599f1d5a1bec,
         type: 3}
       propertyPath: m_RootOrder
@@ -221,35 +226,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneController
       objectReference: {fileID: 0}
-    - target: {fileID: 54011799331987213, guid: 3e394b69a3035f8488c8599f1d5a1bec,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54011799785849248, guid: 3e394b69a3035f8488c8599f1d5a1bec,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 54011799785849263, guid: 3e394b69a3035f8488c8599f1d5a1bec,
         type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
-      value: 0.037137363
+      value: 0.07081554
       objectReference: {fileID: 0}
     - target: {fileID: 54011799785849263, guid: 3e394b69a3035f8488c8599f1d5a1bec,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: -0.6172581
+      value: -0.84132993
       objectReference: {fileID: 0}
     - target: {fileID: 54011799785849263, guid: 3e394b69a3035f8488c8599f1d5a1bec,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: -0.7846092
+      value: 0.32751602
       objectReference: {fileID: 0}
     - target: {fileID: 54011799785849263, guid: 3e394b69a3035f8488c8599f1d5a1bec,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: 0.046361394
+      value: -0.42975107
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e394b69a3035f8488c8599f1d5a1bec, type: 3}

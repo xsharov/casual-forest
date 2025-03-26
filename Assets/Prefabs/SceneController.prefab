@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 54011799331987212}
   - component: {fileID: 54011799331987211}
   - component: {fileID: 54011799331987210}
+  - component: {fileID: 1261204221}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -53,7 +54,7 @@ MonoBehaviour:
   defaultWindSpeed: 0.05
   defaultWindPower: 0.01
   defaultWindDirection: {x: 0, y: 1, z: 0}
-  materialValueMultiplayer: 1
+  materialValueMultiplayer: 0.75
   lerpSpeed: 1
   idleFactorMaterial: 1
   idleFactorVfx: 0.5
@@ -85,6 +86,20 @@ MonoBehaviour:
   maxVerticalDown: -0.5
   gustInterval: 20
   gustDuration: 10
+--- !u!114 &1261204221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54011799331987213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e9856f3a8175648986ce89a42fdc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qualityConfig: {fileID: 11400000, guid: cf079786c145cd0408a48fa0b66edaf0, type: 2}
+  mainCamera: {fileID: 0}
 --- !u!1001 &6280616131959787971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105,22 +120,22 @@ PrefabInstance:
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
-      value: 0.059948307
+      value: 0.07082359
       objectReference: {fileID: 0}
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: 0.2916193
+      value: -0.8412011
       objectReference: {fileID: 0}
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: -0.9534758
+      value: 0.32726043
       objectReference: {fileID: 0}
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: 0.05882352
+      value: -0.42973486
       objectReference: {fileID: 0}
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
