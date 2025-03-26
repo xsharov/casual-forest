@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vegetationMaterial: {fileID: 2100000, guid: f4dc04649e8395f4b8c2549f29275742, type: 2}
-  waterMaterial: {fileID: 2100000, guid: 229e6ea4748f25c4f8d6277a69f9ae66, type: 2}
+  waterRenderer: {fileID: 0}
   fvxGraph: {fileID: 54011799785849263}
   player: {fileID: 0}
   defaultWindSpeed: 0.05
@@ -120,22 +120,22 @@ PrefabInstance:
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
-      value: 0.07082359
+      value: 0.055707943
       objectReference: {fileID: 0}
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: -0.8412011
+      value: 0.25324884
       objectReference: {fileID: 0}
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: 0.32726043
+      value: -0.89528906
       objectReference: {fileID: 0}
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: -0.42973486
+      value: 0.21761806
       objectReference: {fileID: 0}
     - target: {fileID: 6311469880132980844, guid: 750fe2d62d80560448b259163fe5ab3b,
         type: 3}

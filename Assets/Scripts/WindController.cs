@@ -5,8 +5,8 @@ using UnityEngine.VFX;
 [ExecuteAlways]
 public class WindController : MonoBehaviour
 {
-    [SerializeField] private Material vegetationMaterial;
-    [SerializeField] private Material waterMaterial;
+    [SerializeField] private Material vegetationMaterial;    
+    [SerializeField] private Renderer waterRenderer;
     
     [SerializeField] private VisualEffect fvxGraph;
     [SerializeField] private Transform player;
@@ -29,6 +29,8 @@ public class WindController : MonoBehaviour
     [SerializeField] private float waterTimeModifier = 1f; 
     [SerializeField] private  float waterTransitionDuration = 1f;
     [SerializeField] private float windMaterialTransitionDuration = 1f;
+
+    private MaterialPropertyBlock _waterPropertyBlock;
 
     private float _materialMultiplier = 1f;
     
@@ -58,6 +60,8 @@ public class WindController : MonoBehaviour
     private void OnEnable()
     {
         RandomWindChanger.OnWindChanged += ChangeWind;
+        
+        _waterPropertyBlock = new MaterialPropertyBlock();
     }
 
     private void OnDisable()
@@ -130,8 +134,6 @@ public class WindController : MonoBehaviour
             targetWindPower = Mathf.Lerp(_previousWindPower, _currentWindPower * _materialMultiplier * materialValueMultiplayer, t);
         }
 
-        vegetationMaterial.SetFloat(WindSpeed, targetWindPower);
-
         var targetWindDirection = _currentWindDirection * materialValueMultiplayer;
         
         if (_previousWindDirection != targetWindDirection)
@@ -147,11 +149,14 @@ public class WindController : MonoBehaviour
             targetWindDirection = Vector3.Lerp(_previousWindDirection, _currentWindDirection * materialValueMultiplayer, t);
         }
         
+        vegetationMaterial.SetFloat(WindSpeed, targetWindPower);
         vegetationMaterial.SetVector(WindDirection, targetWindDirection);
     }
 
     private void UpdateWaterProperties()
     {
+        if (waterRenderer == null) return;
+        
         if (_waterCurrentVelocity != _targetWindDirection.normalized * waterTimeModifier)
         {
             _waterPreviousVelocity = _waterCurrentVelocity;
@@ -167,7 +172,12 @@ public class WindController : MonoBehaviour
         }
         
         _waterOffset += new Vector2(_waterCurrentVelocity.x,_waterCurrentVelocity.z) * Time.deltaTime;
-        waterMaterial.SetVector(WaveOffset, _waterOffset);
+        
+        waterRenderer.GetPropertyBlock(_waterPropertyBlock);
+        
+        _waterPropertyBlock.SetVector(WaveOffset, _waterOffset);
+        
+        waterRenderer.SetPropertyBlock(_waterPropertyBlock);
     }
 
     private void ChangeWind(float newWindSpeed, float newWindPower, Vector3 newWindDirection, bool isGust)
