@@ -8,13 +8,6 @@
 
 Объекты разделены на static и dynamic для оптимизации. Запечен Occlusion Culling (OC).
 
-Реальное число вызовов отрисовки отслеживается через Frame Debugger (Stats некорректен).
-
-Примерное число draw calls для разных уровней графики:
-- Low – ~100
-- Medium – ~200
-- High – ~300
-
 Включены SRP Batching и GPU Instancing.
 
 ## Шейдеры
