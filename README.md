@@ -1,88 +1,87 @@
-# Описание проекта
+# Project Description
 
-Собрана казуальная открытая сцена лесного лагеря с рыночными прилавками (Main.scene), используя бесплатные ассеты из Unity Asset Store. Некоторые модели деревьев были адаптированы в Blender для удобного использования в кастомных шейдерах.
+A casual open scene of a forest camp with market stalls (Main.scene) was assembled using free assets from the Unity Asset Store. Some tree models were adapted in Blender for easier use with custom shaders.
 
-![Скриншот сцены](Images/general.gif)
+![Scene screenshot](Images/general.gif)
 
-Все объекты окружения сгруппированы в префабы. На Terrain размещены деревья, камни, мелкие детали, нанесены тропинки и различные текстуры ландшафта.
+All environment objects are grouped into prefabs. Trees, rocks, and small details are placed on the Terrain, along with paths and various landscape textures.
 
-Объекты разделены на static и dynamic для оптимизации. Запечен Occlusion Culling (OC).
+Objects are split into static and dynamic for optimization. Occlusion Culling (OC) has been baked.
 
-Включены SRP Batching и GPU Instancing.
+SRP Batching and GPU Instancing are enabled.
 
-## Шейдеры
+## Shaders
 
-Созданы кастомные шейдеры через Shader Graph:
+Custom shaders were created using Shader Graph:
 
-1. **Шейдер вегетации**:
-   - Использует маску через Vertex Color и искажение вершин для имитации движения листвы, зависящего от направления и скорости ветра.
+1. **Vegetation shader**:
+   - Uses a mask via Vertex Color and vertex displacement to simulate foliage movement based on wind direction and speed.
 
-   ![Шейдер вегетации](Images/veg.gif)
+   ![Vegetation shader](Images/veg.gif)
 
-2. **Шейдер Billboard**:
-   - Используется для объектов вегетации (LOD 1).
-   - Поворот в сторону камеры реализован кастомной HLSL-функцией.
+2. **Billboard shader**:
+   - Used for vegetation objects (LOD 1).
+   - Camera-facing rotation is implemented via a custom HLSL function.
 
-3. **Комплексный шейдер воды**:
-   - Учитывает направление ветра, рябь, волны.
-   - Имеет текстурную маску для тины.
-   - Цвет воды меняется в зависимости от глубины и соприкосновения с другими объектами (карта глубины).
-   - Изображение под водой искажается по мере увеличения глубины.
-   - Unlit-шэйдер с поддержкой отражений и освещения.
+3. **Advanced water shader**:
+   - Takes wind direction into account, including ripples and waves.
+   - Includes a texture mask for algae.
+   - Water color changes depending on depth and intersection with other objects (depth map).
+   - Underwater image distortion increases with depth.
+   - An Unlit shader with support for reflections and lighting.
 
-   ![Шейдер воды](Images/water.gif)
+   ![Water shader](Images/water.gif)
 
-## Скриптовая часть
+## Scripting
 
-Создан контроллер сцены с компонентами:
+A scene controller was created with the following components:
 
 - **CameraGraphicSettingsController**
-  - Слушает ивент смены графики, загружает и применяет параметры из CameraSettings (serialized asset).
-  - Ивент доступен через меню (menu/tools/quality).
+  - Listens for a graphics quality change event, loads and applies parameters from CameraSettings (serialized asset).
+  - The event is available via the menu (menu/tools/quality).
 
 - **WindController**
-  - Управляет системой ветра, соединенной с VFX эффектами, шейдером вегетации и волнами на воде.
-  - Для разнообразия ветра используется скрипт RandomWindChanger, который случайно изменяет направление и силу ветра и отправляет контроллеру соответствующий ивент.
+  - Controls the wind system connected to VFX effects, the vegetation shader, and water waves.
+  - For more wind variety, a RandomWindChanger script is used. It randomly changes wind direction and strength and sends the corresponding event to the controller.
 
 - **Third Person Controller**
-  - Управляет персонажем, камерой и реализует 2D BlendTree Simple Directional (анимации Mixamo).
+  - Controls the character and camera and implements a 2D Blend Tree (Simple Directional) using Mixamo animations.
 
   ![Third Person Controller](Images/char.gif)
 
-## Инструментарий
+## Tooling
 
-Созданы полезные инструменты для удобства работы:
+Several useful tools were created to improve workflow:
 
-1. **Автоматическая расстановка Light Probes** по поверхности Terrain с заданным шагом и количеством слоев.
-2. **Экспортер Terrain в формат FBX**.
-3. **Billboard-генератор** для префабов растительности.
+1. **Automatic Light Probe placement** across the Terrain surface with a specified step and number of layers.
+2. **Terrain-to-FBX exporter**.
+3. **Billboard generator** for vegetation prefabs.
 
-## Настройка URP рендера
+## URP Render Setup
 
-- Настроены Render Pipeline Assets и дополнительные параметры для трех уровней графики (Low, Medium, High).
-- Настройки камеры также изменяются согласно выбранному уровню графики.
+- Render Pipeline Assets and additional settings were configured for three graphics quality levels (Low, Medium, High).
+- Camera settings are also adjusted according to the selected graphics quality level.
 
-## Настройка освещения и запекание
+## Lighting Setup and Baking
 
-- Выставлены источники освещения, настроен Environment.
-- Установлены Light Probes и Reflection Probes.
-- Используется Mixed и Baked освещение.
-- Lightmap карты запечены в разрешении 2K (лучше было бы 4K для батчинга, но ограничения размера файлов GitHub не позволяют; LFS также не использовался по той же причине).
-- Установлены ограничения на количество карт освещения: 3 карты + 1 для Terrain.
+- Light sources were placed and the Environment was configured.
+- Light Probes and Reflection Probes were set up.
+- Mixed and Baked lighting is used.
+- Lightmaps were baked at 2K resolution (4K would be better for batching, but GitHub file size limitations prevent it; Git LFS was also not used for the same reason).
+- Limits were set for the number of lightmaps: 3 maps + 1 for the Terrain.
 
-![Настройка освещения](Images/probes.png)
+![Lighting setup](Images/probes.png)
 
-## Визуальные эффекты
+## Visual Effects
 
-Созданы два комплексных VFX эффекта (с использованием VFX Graph):
+Two advanced VFX effects were created using VFX Graph:
 
-1. **Листва, поднимаемая ветром**
-   - Эффект синхронизирован с системой ветра.
-   - Реализован через Output Particle Quad.
+1. **Wind-blown leaves**
+   - The effect is synced with the wind system.
+   - Implemented using Output Particle Quad.
 
-2. **Падающие кометы на ночном небе**
-   - Использует системы Heads, Sparks, Trails.
-   - Trails имеет кастомный шейдер для правильного масштабирования линии и решения проблемы с Quadrilateral Interpolation.
+2. **Falling comets in the night sky**
+   - Uses Heads, Sparks, and Trails systems.
+   - Trails use a custom shader to properly scale the line and solve the Quadrilateral Interpolation issue.
 
-![VFX эффекты](Images/vfx.gif)
-
+![VFX effects](Images/vfx.gif)
